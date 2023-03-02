@@ -1,22 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import ModalButton from './Components/Base/Button';
+import Popup from './Components/Model/Model';
+
 
 function App() {
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  function togglePopup() {
+    setShowPopup(!showPopup);
+  }
+
+  function closePopup() {
+    setShowPopup(false);
+  }   
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <div className="app">
+      <button onClick={togglePopup}>Open Popup</button>
+      {showPopup && <Popup onClose={closePopup} />}
+    </div>
       </header>
     </div>
   );
